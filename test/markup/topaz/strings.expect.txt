@@ -1,0 +1,4 @@
+<span class="hljs-keyword">let</span> label = <span class="hljs-string">&quot;Hello <span class="hljs-subst">{name}</span>&quot;</span>
+<span class="hljs-keyword">let</span> text = <span class="hljs-string">&quot;&quot;&quot;
+    // still text
+    &quot;&quot;&quot;</span>

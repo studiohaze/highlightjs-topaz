@@ -1,0 +1,4 @@
+let label = "Hello {name}"
+let text = """
+    // still text
+    """

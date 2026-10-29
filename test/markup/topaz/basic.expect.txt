@@ -1,0 +1,3 @@
+<span class="hljs-comment">// A comment</span>
+<span class="hljs-keyword">let</span> answer: <span class="hljs-type">int</span> = <span class="hljs-number">0xFF_FF</span>
+<span class="hljs-keyword">let</span> active = <span class="hljs-literal">true</span>

@@ -1,0 +1,49 @@
+{
+  "name": "highlightjs-topaz",
+  "version": "0.1.0",
+  "description": "Topaz language grammar for Highlight.js",
+  "type": "module",
+  "main": "dist/topaz.cjs",
+  "module": "dist/topaz.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/topaz.es.js",
+      "require": "./dist/topaz.cjs"
+    }
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "pretest": "npm run build",
+    "test": "mocha",
+    "test-markup": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/studiohaze/highlightjs-topaz.git"
+  },
+  "keywords": [
+    "highlight.js",
+    "highlightjs",
+    "syntax"
+  ],
+  "author": "STUDIO HAZE",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/studiohaze/highlightjs-topaz/issues"
+  },
+  "homepage": "https://github.com/studiohaze/highlightjs-topaz",
+  "peerDependencies": {
+    "highlight.js": "^11.11.0"
+  },
+  "devDependencies": {
+    "glob": "^11.0.0",
+    "highlight.js": "^11.11.1",
+    "mocha": "^11.2.2",
+    "rollup": "^4.0.2",
+    "should": "^13.2.3"
+  }
+}

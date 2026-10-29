@@ -1,0 +1,3 @@
+// A comment
+let answer: int = 0xFF_FF
+let active = true
