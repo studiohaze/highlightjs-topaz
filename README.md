@@ -31,10 +31,10 @@ The tests build the ESM, CommonJS and browser bundles and compare the highlighte
 
 ## Links
 
-- [Topaz](https://topaz.ooo/)
+- [Topaz documentation](https://topaz.ooo/en/docs)
+- [Topaz source](https://github.com/studiohaze/topaz)
 - [Lexical rules](https://topaz.ooo/v5.21/en/docs/language/lexical-layout)
 - [Strings and templates](https://topaz.ooo/v5.21/en/docs/language/strings-templates)
-- [Topaz source](https://github.com/studiohaze/topaz)
 
 ## License
 
