@@ -12,8 +12,10 @@
     }
   },
   "files": [
-    "src",
-    "dist"
+    "src/",
+    "dist/",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "rollup -c",
@@ -26,16 +28,16 @@
     "url": "https://github.com/studiohaze/highlightjs-topaz.git"
   },
   "keywords": [
-    "highlight.js",
-    "highlightjs",
-    "syntax"
+    "syntax-highlighting",
+    "topaz",
+    "highlight.js"
   ],
   "author": "STUDIO HAZE",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/studiohaze/highlightjs-topaz/issues"
   },
-  "homepage": "https://github.com/studiohaze/highlightjs-topaz",
+  "homepage": "https://github.com/studiohaze/highlightjs-topaz#readme",
   "peerDependencies": {
     "highlight.js": "^11.11.0"
   },
