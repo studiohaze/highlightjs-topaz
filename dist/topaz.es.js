@@ -11,11 +11,16 @@ function topaz(hljs) {
   const KEYWORDS = {
     $pattern: /[\p{L}_\p{Extended_Pictographic}][\p{L}\p{N}_\p{Extended_Pictographic}]*/u,
     keyword: 'import export as let mut const function return if else match case '
-      + 'for in while break continue record enum type newtype protocol impl '
-      + 'derives defer',
+      + 'for in by while loop break continue record enum type newtype protocol impl '
+      + 'derives defer using concurrent',
     literal: 'true false null None',
     type: 'int float bool string template Array Map Set Option Result',
     built_in: 'Some Ok Err'
+  };
+  const COLLECTION_HEAD = {
+    scope: 'keyword',
+    begin: /(?<![\p{L}\p{N}_\p{Extended_Pictographic}.])(?:map|set)(?=[ \t]*\{)/u,
+    relevance: 0
   };
   const NUMBER = {
     scope: 'number',
@@ -49,11 +54,12 @@ function topaz(hljs) {
     begin: /\{/,
     end: /\}/,
     keywords: KEYWORDS,
-    contains: [...STRINGS, ...COMMENTS, NUMBER, 'self']
+    contains: [...STRINGS, ...COMMENTS, COLLECTION_HEAD, NUMBER, 'self']
   };
   SUBST.contains = [
     ...STRINGS,
     ...COMMENTS,
+    COLLECTION_HEAD,
     NUMBER,
     BRACES
   ];
@@ -62,7 +68,7 @@ function topaz(hljs) {
     aliases: ['tpz'],
     unicodeRegex: true,
     keywords: KEYWORDS,
-    contains: [...COMMENTS, ...STRINGS, NUMBER]
+    contains: [...COMMENTS, ...STRINGS, COLLECTION_HEAD, NUMBER]
   };
 }
 

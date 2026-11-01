@@ -30,6 +30,27 @@ describe('topaz', () => {
   });
 });
 
+describe('Topaz 5.21 keywords and collection heads', () => {
+  it('colors every keyword and only literal uses of map and set', () => {
+    const source = fs.readFileSync(path.join(fixtureFolder, 'keywords-521.txt'), 'utf8');
+    const html = hljs.highlight(source, { language: 'topaz' }).value;
+    const words = 'let mut const type function return if else match case for in by while '
+      + 'break continue defer concurrent import export as record enum newtype protocol impl derives loop using';
+    for (const word of words.split(' ')) {
+      assert.ok(html.includes('<span class="hljs-keyword">' + word + '</span>'), word);
+    }
+    for (const word of ['true', 'false', 'null']) {
+      assert.ok(html.includes('<span class="hljs-literal">' + word + '</span>'), word);
+    }
+    for (const word of ['map', 'set']) {
+      assert.equal(html.split('<span class="hljs-keyword">' + word + '</span>').length - 1, 3);
+      assert.ok(html.includes('<span class="hljs-keyword">let</span> ' + word + ' ='));
+    }
+    assert.equal(html.split('xs.map(f)').length - 1, 2);
+    for (const name of ['mapValue', 'setValue', 'map상태', 'set💎']) assert.ok(html.includes(name));
+  });
+});
+
 const require = createRequire(import.meta.url);
 const complexSource = fs.readFileSync(path.join(here, 'detect/topaz/default.txt'), 'utf8');
 const decode = html => html.replace(/<[^>]+>/g, '')

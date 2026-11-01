@@ -1,0 +1,50 @@
+<span class="hljs-keyword">import</span> std.io <span class="hljs-keyword">as</span> io
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> Count = <span class="hljs-type">int</span>
+<span class="hljs-keyword">const</span> LIMIT: Count = <span class="hljs-number">4</span>
+<span class="hljs-keyword">record</span> Item <span class="hljs-keyword">derives</span> Eq { value: <span class="hljs-type">int</span> }
+<span class="hljs-keyword">enum</span> State { Ready, Done }
+<span class="hljs-keyword">newtype</span> ItemId = <span class="hljs-type">int</span>
+<span class="hljs-keyword">protocol</span> Value { <span class="hljs-keyword">function</span> value(item: Self) -&gt; <span class="hljs-type">int</span> }
+<span class="hljs-keyword">impl</span> Value&lt;Item&gt; {
+    <span class="hljs-keyword">function</span> value(item: Item) -&gt; <span class="hljs-type">int</span> { item.value }
+}
+
+<span class="hljs-keyword">function</span> f(value: <span class="hljs-type">int</span>) -&gt; <span class="hljs-type">int</span> { <span class="hljs-keyword">return</span> value + <span class="hljs-number">1</span> }
+<span class="hljs-keyword">let</span> xs = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+<span class="hljs-keyword">let</span> mapped = xs.map(f)
+<span class="hljs-keyword">let</span> map = <span class="hljs-number">1</span>
+<span class="hljs-keyword">let</span> set = <span class="hljs-number">2</span>
+<span class="hljs-keyword">let</span> maps = <span class="hljs-keyword">map</span> { <span class="hljs-string">&quot;answer&quot;</span>: <span class="hljs-number">42</span> }
+<span class="hljs-keyword">let</span> sets = <span class="hljs-keyword">set</span> { <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span> }
+<span class="hljs-keyword">let</span> spacedMap = <span class="hljs-keyword">map</span>    { <span class="hljs-string">&quot;answer&quot;</span>: <span class="hljs-number">42</span> }
+<span class="hljs-keyword">let</span> spacedSet = <span class="hljs-keyword">set</span>    { <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span> }
+<span class="hljs-keyword">let</span> interpolated = <span class="hljs-string">&quot;<span class="hljs-subst">{<span class="hljs-keyword">map</span> { <span class="hljs-string">&quot;answer&quot;</span>: <span class="hljs-number">42</span> }}</span>:<span class="hljs-subst">{<span class="hljs-keyword">set</span> { <span class="hljs-number">1</span>, <span class="hljs-number">2</span> }}</span>:<span class="hljs-subst">{xs.map(f)}</span>&quot;</span>
+<span class="hljs-keyword">let</span> mapValue = <span class="hljs-number">1</span>
+<span class="hljs-keyword">let</span> setValue = <span class="hljs-number">2</span>
+<span class="hljs-keyword">let</span> map상태 = <span class="hljs-number">3</span>
+<span class="hljs-keyword">let</span> set💎 = <span class="hljs-number">4</span>
+<span class="hljs-keyword">let</span> truth = <span class="hljs-literal">true</span>
+<span class="hljs-keyword">let</span> untruth = <span class="hljs-literal">false</span>
+<span class="hljs-keyword">let</span> absent = <span class="hljs-literal">null</span>
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> total = <span class="hljs-number">0</span>
+<span class="hljs-keyword">for</span> index <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..LIMIT <span class="hljs-keyword">by</span> <span class="hljs-number">2</span> {
+    <span class="hljs-keyword">if</span> index == <span class="hljs-number">0</span> { <span class="hljs-keyword">continue</span> } <span class="hljs-keyword">else</span> { total = total + index }
+}
+<span class="hljs-keyword">while</span> total &lt; LIMIT { total = total + <span class="hljs-number">1</span> }
+<span class="hljs-keyword">loop</span> { <span class="hljs-keyword">break</span> }
+<span class="hljs-keyword">let</span> state = <span class="hljs-keyword">match</span> State.Ready {
+    <span class="hljs-keyword">case</span> Ready =&gt; <span class="hljs-number">1</span>
+    <span class="hljs-keyword">case</span> Done =&gt; <span class="hljs-number">0</span>
+}
+<span class="hljs-keyword">function</span> cleanup() -&gt; <span class="hljs-type">int</span> {
+    <span class="hljs-keyword">defer</span> { io.writeLine(<span class="hljs-string">&quot;done&quot;</span>) }
+    <span class="hljs-keyword">return</span> state
+}
+<span class="hljs-keyword">let</span> parallel = <span class="hljs-keyword">concurrent</span> {
+    first: f(<span class="hljs-number">1</span>)
+    second: f(<span class="hljs-number">2</span>)
+}
+<span class="hljs-keyword">function</span> readFile(path: <span class="hljs-type">string</span>) -&gt; <span class="hljs-type">Result</span>&lt;<span class="hljs-type">string</span>, <span class="hljs-type">string</span>&gt; {
+    <span class="hljs-keyword">using</span> file = io.open(path)? { <span class="hljs-keyword">return</span> file.read() }
+}

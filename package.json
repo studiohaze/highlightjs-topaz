@@ -1,6 +1,6 @@
 {
   "name": "highlightjs-topaz",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Topaz language grammar for Highlight.js",
   "type": "module",
   "main": "dist/topaz.cjs",
