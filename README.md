@@ -1,48 +1,41 @@
-# Topaz grammar for Highlight.js
+# Topaz for Highlight.js
 
-A syntax-highlighting grammar for [Topaz](https://topaz.ooo/), developed by STUDIO HAZE.
-This is STUDIO HAZE's Topaz, distinct from m-schm's unrelated Topaz language.
+Syntax highlighting for [Topaz](https://topaz.ooo/), the programming language from STUDIO HAZE. It uses the standard Highlight.js scopes, so every existing theme works.
 
-This package contains highlighting rules and public-language examples, not the
-language implementation. It uses standard Highlight.js scopes, so existing
-themes apply. This is syntax highlighting, not a language validator.
+## Install
 
-## Use from the repository
+```sh
+npm install highlight.js highlightjs-topaz
+```
 
-Install Highlight.js 11 and clone this grammar repository. The committed
-`dist/` files can be used directly; a published npm version is not required.
+## Use
 
 ```javascript
 import hljs from 'highlight.js/lib/core';
-import grammar from './dist/topaz.es.js';
+import topaz from 'highlightjs-topaz';
 
-hljs.registerLanguage('topaz', grammar);
-console.log(hljs.highlight(source, { language: 'topaz' }).value);
+hljs.registerLanguage('topaz', topaz);
+const html = hljs.highlight(source, { language: 'topaz' }).value;
 ```
 
-CommonJS exports the grammar from `dist/topaz.cjs`. The browser bundle
-`dist/topaz.js` registers itself on an already loaded global `hljs`.
-The extension alias is `tpz`.
+CommonJS works with `require('highlightjs-topaz')`. In a browser, load `dist/topaz.js` after Highlight.js and it registers itself on the global `hljs`. The alias `tpz` works too.
 
-## Develop and test
+## Develop
 
 ```sh
 npm ci
 npm test
 ```
 
-`npm test` builds ESM, CommonJS, and browser bundles, checks exact markup
-fixtures, and loads the complete CLI-verified example through all three formats.
-The test runner refuses to pass when it discovers no markup fixtures.
-Commit the generated `dist/` files when changing the grammar.
+The tests build the ESM, CommonJS and browser bundles and compare the highlighted markup with the fixtures. Commit the rebuilt `dist/` files with any grammar change.
 
-## Syntax references
+## Links
 
-- [Official language site](https://topaz.ooo/)
+- [Topaz](https://topaz.ooo/)
 - [Lexical rules](https://topaz.ooo/v5.21/en/docs/language/lexical-layout)
 - [Strings and templates](https://topaz.ooo/v5.21/en/docs/language/strings-templates)
-- The complete example was run with official Topaz 5.21.0, reference compiler.
+- [Topaz source](https://github.com/studiohaze/topaz)
 
 ## License
 
-MIT; see [LICENSE](LICENSE). The upstream grammar-template layout is also MIT.
+MIT
