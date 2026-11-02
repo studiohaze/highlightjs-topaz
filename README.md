@@ -1,6 +1,6 @@
 # Topaz for Highlight.js
 
-Syntax highlighting for [Topaz](https://topaz.ooo/), the programming language from STUDIO HAZE. It uses the standard Highlight.js scopes, so every existing theme works.
+Syntax highlighting for [Topaz](https://topaz.ooo/), a general-purpose programming language with typesetting built in. It uses the standard Highlight.js scopes, so every existing theme works.
 
 ## Install
 
